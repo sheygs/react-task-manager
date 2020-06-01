@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-const Todo = ({ id, title }) => {
+const Todo = ({ id, title, onDelete }) => {
    return (
       <Fragment>
           <tr>
@@ -14,7 +14,8 @@ const Todo = ({ id, title }) => {
                 </button>
              </td>
              <td>
-             <button 
+             <button
+                 onClick={() => onDelete(id)} 
                  type="button" 
                  className="btn btn-danger">
                  Delete

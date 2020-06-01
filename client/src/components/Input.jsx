@@ -6,8 +6,8 @@ import React, { Fragment, useState } from 'react';
    const handleSubmit = async e => {
      e.preventDefault();
      try {
+        if (!title) return;
         const body = {title};
-
         const response = await fetch("http://localhost:5000/api/v1/todos", {
          method: "POST",
          headers: {
@@ -21,7 +21,7 @@ import React, { Fragment, useState } from 'react';
      } catch ({ message }) {
        console.error(message);
      }
-     setTitle('');
+    setTitle(''); 
    }
 
    const handleChange = e => {

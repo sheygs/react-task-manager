@@ -4,6 +4,18 @@ import Todo from './Todo';
 const Todos = () => {
  const [todos, setTodos] = useState([]);
 
+ const DeleteTodo = async (id) => {
+    try {
+      const deletedTodo = await fetch(`http://localhost:5000/api/v1/todos/${id}`, {
+         method: "DELETE"
+      });
+      setTodos(todos.filter(todo => todo.id !== id));
+    } catch({ message }) {
+       console.error(message);
+    } 
+ };
+
+
  const getAllTodos = async () => {
      try {
       const response = await fetch("http://localhost:5000/api/v1/todos");
@@ -19,6 +31,8 @@ const Todos = () => {
    getAllTodos();
  });
 
+
+
  return (
     <Fragment>
        <table className="table mt-5">
@@ -31,7 +45,7 @@ const Todos = () => {
            </tr>
          </thead>
          <tbody>
-           { todos.map(todo => <Todo key={todo.id} {...todo}/>) }
+           { todos.map(todo => <Todo onDelete={DeleteTodo} key={todo.id} {...todo}/>) }
          </tbody>
        </table>
     </Fragment>
