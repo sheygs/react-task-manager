@@ -6,7 +6,7 @@ const Todos = () => {
 
  const DeleteTodo = async (id) => {
     try {
-      const deletedTodo = await fetch(`http://localhost:5000/api/v1/todos/${id}`, {
+      await fetch(`http://localhost:5000/api/v1/todos/${id}`, {
          method: "DELETE"
       });
       setTodos(todos.filter(todo => todo.id !== id));

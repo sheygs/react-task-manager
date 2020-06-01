@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import Edit from './Edit';
 
 const Todo = ({ id, title, onDelete }) => {
    return (
@@ -7,17 +8,14 @@ const Todo = ({ id, title, onDelete }) => {
              <th scope="row">{id}</th>
              <td>{title}</td>
              <td>
-                <button 
-                type="button"
-                className="btn btn-warning">
-                  Edit
-                </button>
+                <Edit />
              </td>
              <td>
              <button
                  onClick={() => onDelete(id)} 
                  type="button" 
-                 className="btn btn-danger">
+                 className="btn btn-danger"
+             >
                  Delete
             </button>
              </td>
