@@ -1,3 +1,4 @@
-- "...RETURNING *" is used to return a value for POST/UPDATE/DELETE
+## notes
 
-- For GET/, no need to add RETURNING * because the purpose of select is to return data back
+- `...RETURNING *` is used when performing `POST/UPDATE/DELETE` operations to return a value.
+- For `GET` request, no need to add `...RETURNING *` because the purpose of select is to return data back
