@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 
 const Edit = ({ todo }) => {
   const [title, setTitle] = useState(todo.title);
@@ -28,12 +28,16 @@ const Edit = ({ todo }) => {
      setTitle(e.target.value);
    }
 
+   useEffect(() => {
+      document.body.addEventListener('onclick', () => setTitle(todo.title) )
+   })
+    
   return (
       <Fragment>
-            {/* Button trigger modal */}
-            <button onClick={() => setTitle(todo.title)} type="button" className="btn btn-warning" data-toggle="modal" data-target={`#id-${todo.id}`}>
-              Edit
-            </button>
+          { /* Button trigger modal */ }
+         <button onClick={() => setTitle(todo.title)} type="button" className="btn btn-warning" data-toggle="modal" data-target={`#id-${todo.id}`}>
+           Edit
+          </button>
 
            {/*  Modal  */}
           <div className="modal fade" id={`id-${todo.id}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -41,7 +45,10 @@ const Edit = ({ todo }) => {
                   <div className="modal-content">
                       <div className="modal-header">
                         <h5 className="modal-title" id="exampleModalLongTitle">Edit</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        {/* the onclick() is used to set the title to its
+                           initial title incase the title is edited and not
+                        saved */}
+                        <button onClick={() => setTitle(todo.title)} type="button" className="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
@@ -50,7 +57,7 @@ const Edit = ({ todo }) => {
                       </div>
                       <div className="modal-footer">
                         <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={editTodo}>Save Changes</button>
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>               
+                        <button onClick={() => setTitle(todo.title)} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>               
                       </div>
                   </div>
               </div>
