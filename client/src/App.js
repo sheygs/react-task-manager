@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Input from './components/Input';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        Todo
-      </header>
-    </div>
+     <Fragment>
+       <h1 className="text-center">Enter Todo</h1>
+       <div className="container">
+          <Input />
+       </div>
+     </Fragment>
   );
 }
 

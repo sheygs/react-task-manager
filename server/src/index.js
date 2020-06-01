@@ -13,7 +13,7 @@ app.use(cors());
 // create a todo
 app.post('/api/v1/todos', async (req,res) => {
    try {
-       const { title } = req.body || {};
+       const { title } = req.body;
        const todo = await pool.query("INSERT INTO pern (title) VALUES ($1) RETURNING *", [title]);
        const { rows } = todo;
        res.status(201).json(rows[0]);
@@ -83,7 +83,7 @@ app.delete('/api/v1/todos/:id', async (req, res) => {
 
 
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
