@@ -1,29 +1,56 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
-const Edit = () => {
-   return (
+const Edit = ({ todo }) => {
+  const [title, setTitle] = useState(todo.title);
+ 
+  const editTodo = async e => {
+     try {
+      e.preventDefault();
+      const body = {title};
+      const editedTodo = await fetch(`http://localhost:5000/api/v1/todos/${todo.id}`, 
+      {
+         method: "PUT",
+         headers: {
+          "Content-Type": "application/json"
+         },
+         body: JSON.stringify(body)
+      });
+      
+      console.log(editedTodo);
+
+     } catch({ message }) {
+        console.error(message);
+     }
+     
+  };
+
+   const onEditChange = (e) => {
+     setTitle(e.target.value);
+   }
+
+  return (
       <Fragment>
             {/* Button trigger modal */}
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
+            <button onClick={() => setTitle(todo.title)} type="button" className="btn btn-warning" data-toggle="modal" data-target={`#id-${todo.id}`}>
               Edit
             </button>
 
            {/*  Modal  */}
-          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Edit</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <div className="modal fade" id={`id-${todo.id}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div className="modal-dialog modal-dialog-centered" role="document">
+                  <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLongTitle">Edit</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
-                         <input className="form-control" type="text" />
+                      <div className="modal-body">
+                         <input className="form-control" type="text" value={title} onChange={onEditChange} />
                       </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save Changes</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>               
+                      <div className="modal-footer">
+                        <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={editTodo}>Save Changes</button>
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>               
                       </div>
                   </div>
               </div>

@@ -8,7 +8,7 @@ const Todo = ({ id, title, onDelete }) => {
              <th scope="row">{id}</th>
              <td>{title}</td>
              <td>
-                <Edit />
+                <Edit todo={{id, title}} />
              </td>
              <td>
              <button
