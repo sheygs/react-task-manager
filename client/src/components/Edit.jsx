@@ -7,7 +7,7 @@ const Edit = ({ todo }) => {
      try {
       e.preventDefault();
       const body = {title};
-      const editedTodo = await fetch(`http://localhost:5000/api/v1/todos/${todo.id}`, 
+      const editedTodo = await fetch(`/api/v1/todos/${todo.id}`, 
       {
          method: "PUT",
          headers: {

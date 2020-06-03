@@ -1,11 +1,21 @@
 import cors from 'cors';
 import pool from '../db';
+import path from 'path';
 import express from 'express';
 const app = express();
 
 // middleware - req.body
 app.use(express.json())
 app.use(cors());
+
+
+if (process.env.NODE_ENV === 'production'){
+   // serve static content from the client build folder
+   express.static(path.join(__dirname, "client/build"));
+}
+
+// console.log(__dirname);
+// console.log(path.join(__dirname, "client/build"));
 
 
 /* ROUTES */
@@ -83,6 +93,10 @@ app.delete('/api/v1/todos/:id', async (req, res) => {
    }
 });
 
+// return the main page for any incorrect route
+app.get('*', (req, res) => {
+   res.sendFile(path.join(__dirname, "client/build/index.html"))
+});
 
 
 const port = process.env.PORT || 5000;

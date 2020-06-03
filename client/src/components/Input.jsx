@@ -8,7 +8,7 @@ import React, { Fragment, useState } from 'react';
      try {
         if (!title) return;
         const body = {title};
-        const response = await fetch("http://localhost:5000/api/v1/todos", {
+        const response = await fetch("/api/v1/todos", {
          method: "POST",
          headers: {
             "Content-Type": "application/json"
