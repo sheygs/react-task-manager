@@ -14,6 +14,7 @@ app.use(cors());
 app.post('/api/v1/todos', async (req,res) => {
    try {
        const { title } = req.body;
+       if (!title) return;
        const todo = await pool.query("INSERT INTO pern (title) VALUES ($1) RETURNING *", [title]);
        const { rows } = todo;
        res.status(201).json(rows[0]);
@@ -55,6 +56,7 @@ app.put('/api/v1/todos/:id', async (req, res) => {
    try {
      const { id } = req.params;
      const { title } = req.body;
+     if (!title) return;
      const updatedTodo = await pool.query("UPDATE pern SET title = $1 WHERE id = $2 RETURNING *", [title, id]);
      const { rows } = updatedTodo;
      if (!rows[0]){ 
