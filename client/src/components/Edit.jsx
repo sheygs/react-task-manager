@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const Edit = ({ todo }) => {
   const [title, setTitle] = useState(todo.title);
@@ -65,5 +66,9 @@ const Edit = ({ todo }) => {
       </Fragment>
    )
 };
+
+Edit.propTypes = {
+   todo: PropTypes.object.isRequired
+}
 
 export default Edit;

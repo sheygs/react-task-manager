@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Edit from './Edit';
 
 const Todo = ({ id, title, onDelete }) => {
@@ -22,6 +23,13 @@ const Todo = ({ id, title, onDelete }) => {
           </tr>
       </Fragment>
    )
+};
+
+
+Todo.propTypes = {
+ id: PropTypes.number.isRequired,
+ title: PropTypes.string.isRequired,
+ onDelete: PropTypes.func.isRequired
 };
 
 export default Todo;
