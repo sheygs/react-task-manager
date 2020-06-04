@@ -1,24 +1,24 @@
  # Installation
-
-   ## Clone the repository
+  ```shell
+   # Clone the repository
    git clone https://github.com/sheygs13/pern.git
 
-   ## Change directory
+   # Change directory
    cd src
 
-   ## Install dependencies
+   # Install dependencies
    npm install
 
-   ## Configure environment variables
+   # Configure environment variables
    Replace `.env.sample` with `.env` and fill the required placeholders
 
-   ## Run your app
+   # Run your app
    npm run dev
 
    # Minify your app
    npm run build
 
-
+```
 
 # notes
 

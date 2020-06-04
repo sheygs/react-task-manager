@@ -1,5 +1,5 @@
    # Installation
-
+  ```shell
    ## Change directory
    cd client
 
@@ -12,4 +12,4 @@
    # Minify your app
    yarn build
 
-   
+```   
