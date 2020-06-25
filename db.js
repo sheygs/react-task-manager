@@ -10,7 +10,7 @@ const dev_config = {
   database:process.env.DB_NAME
 }
 
-
+// heroku addon
 const prod_config = {
   connectionString: process.env.DATABASE_URL,
 }

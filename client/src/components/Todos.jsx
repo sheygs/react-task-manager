@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useEffect } from 'react';
-
 import Todo from './Todo';
 
 const Todos = () => {
@@ -16,7 +15,6 @@ const Todos = () => {
     } 
  };
 
-
  const getAllTodos = async () => {
      try {
       const response = await fetch("/api/v1/todos");
@@ -27,12 +25,10 @@ const Todos = () => {
      }
  };
 
- // similar to componentDidMount
+
  useEffect(() => {
    getAllTodos();
  });
-
-
 
  return (
     <Fragment>
@@ -52,7 +48,6 @@ const Todos = () => {
     </Fragment>
  )
 }
-
 
 
 export default Todos;

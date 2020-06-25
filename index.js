@@ -1,5 +1,5 @@
 import cors from 'cors';
-import pool from '../db';
+import pool from './db';
 import path from 'path';
 import express from 'express';
 const app = express();
@@ -13,10 +13,6 @@ if (process.env.NODE_ENV === 'production'){
    // serve static content from the client build folder
    express.static(path.join(__dirname, "client/build"));
 }
-
-// console.log(__dirname);
-// console.log(path.join(__dirname, "client/build"));
-
 
 /* ROUTES */
 

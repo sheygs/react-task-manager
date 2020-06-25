@@ -5,11 +5,11 @@
   "main": "index.js",
   "engines": {
     "node": "12.16.2",
-    "npm": "6.14.4"
+    "npm": "6.14.5"
   },
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon --exec babel-node src/index.js",
+    "start": "node index.js",
+    "dev": "nodemon --exec babel-node index.js",
     "build": "babel src --out-dir dist",
     "clean": "rimraf dist",
     "heroku-postbuild": "cd client && yarn install && yarn build"
