@@ -13,10 +13,8 @@
  # Configure environment variables
  Replace `.env.sample` with `.env` and fill the required placeholders
 
- # Run your app
+ # Run your app (development)
  npm run dev
 
- # Minify your app
- npm run build
 
 ```
