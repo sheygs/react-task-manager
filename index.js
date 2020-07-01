@@ -1,7 +1,7 @@
-import cors from "cors";
-import pool from "./db";
-import path from "path";
-import express from "express";
+const cors = require("cors");
+const pool = require("./db");
+const path = require("path");
+const express = require("express");
 const app = express();
 
 // middleware - req.body
@@ -108,4 +108,4 @@ app.get("*", (req, res) => {
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, () => console.log(`Listening on port ${port}...`));
